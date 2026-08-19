@@ -8,7 +8,6 @@
 #include "task.h"
 #include <stm32f4xx.h>
 
-#define STACK_SIZE 100
 
 tcb_t tcbs[NUM_TASK];
 
@@ -21,10 +20,8 @@ void init_tasks(uint8_t pid,void(*task)()){
 	__disable_irq();
 
 	if(pid == 0){
-	tcbs[0].next_tcb = &tcbs[1];
-	tcbs[1].next_tcb = &tcbs[2];
-	tcbs[2].next_tcb = &tcbs[3];
-	tcbs[3].next_tcb = &tcbs[0];
+		for(uint8_t i = 0; i< NUM_TASK;i++)
+			tcbs[i].next_tcb = &tcbs[(i+1) % NUM_TASK];
 }
 
 	tcbs[pid].sp = &tcb_stack[pid][STACK_SIZE - 16];

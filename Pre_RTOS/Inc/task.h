@@ -8,8 +8,11 @@
 #ifndef TASK_H_
 #define TASK_H_
 
-#define NUM_TASK 4
+#define NUM_TASK 2
 #define TASK_NAME_MAX 10
+#define STACK_SIZE 100
+
+#include <stdint.h>
 
 typedef enum {
 	STOPPED = 0,
@@ -17,7 +20,7 @@ typedef enum {
 }task_state;
 
 typedef struct tcb {
-	uint8_t *sp;
+	uint32_t *sp;
 	struct tcb *next_tcb;
 	task_state state;
 }tcb_t;
