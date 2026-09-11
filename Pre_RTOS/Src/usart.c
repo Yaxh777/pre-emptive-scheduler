@@ -55,7 +55,7 @@ void USART_Manage_Request(uint8_t rq){
 		break;
 	case '3':
 		TIM2_Disable();
-		USART_Send("LD2 stoped like everything and everyone will one day\n\r");
+		USART_Send("LD2 stopped like everything and everyone will one day\n\r");
 		break;
 	default:
 		USART_Send("Can't you read?? faggot!!\n\r");

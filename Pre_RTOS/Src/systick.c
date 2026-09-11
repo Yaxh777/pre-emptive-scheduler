@@ -15,11 +15,11 @@
 #define PENDSV_INT_SET (1U<<28)
 
 void Systick_Conf(){
-	SysTick->LOAD = COUNTER_LOAD_VALUE;
-	SysTick->VAL = COUNTER_INIT_VALUE;
-	SysTick->CTRL = (COUNTER_EN | SYSTICK_INT_EN | CLOCK_SOURCE);
+	SysTick->LOAD = COUNTER_LOAD_VALUE;      	/*Loading Load Value into Load register*/
+	SysTick->VAL = COUNTER_INIT_VALUE;			/*Clock initialized with 0*/
+	SysTick->CTRL = (COUNTER_EN | SYSTICK_INT_EN | CLOCK_SOURCE); /*Counter Enable + Systick IRQ Enable + AHB clock select*/
 }
 
 void SysTick_Handler(){
-	SCB->ICSR = PENDSV_INT_SET;
+	SCB->ICSR = PENDSV_INT_SET;				/*Setting PendSV bit*/
 }
