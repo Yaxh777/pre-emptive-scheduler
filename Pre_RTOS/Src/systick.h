@@ -5,11 +5,11 @@
  *      Author: yash
  */
 
-#ifndef TIMER_H_
-#define TIMER_H_
+#ifndef SYSTICK_H_
+#define SYSTICK_H_
 
 #include <stm32f4xx.h>
 
 void Systick_Conf();
 
-#endif /* TIMER_H_ */
+#endif /* SYSTICK_H_ */

@@ -12,7 +12,7 @@
 
 Launch_Scheduler:
 
-	CPSIE I
+	CPSID I
 
 	LDR R0, =active_tcb
 

@@ -12,6 +12,7 @@
 .global active_tcb
 
 PendSV_Handler:
+
 	CPSID I
 
 	PUSH {R4-R7}

@@ -15,7 +15,7 @@ uint32_t tcb_stack[NUM_TASK][STACK_SIZE];
 
 tcb_t *active_tcb = &tcbs[0];
 
-void init_tasks(uint8_t pid,void(*task)()){
+void task_init(uint8_t pid,const char *name,void(*task)()){
 
 	__disable_irq();
 
@@ -29,6 +29,10 @@ void init_tasks(uint8_t pid,void(*task)()){
 	tcb_stack[pid][STACK_SIZE - 1] = 0x01000000;
 
 	tcb_stack[pid][STACK_SIZE - 2] = (uint32_t)task;
+
+	tcbs[pid].task_name = name;
+
+	tcbs[pid].state = TASK_READY;
 
 	__enable_irq();
 }

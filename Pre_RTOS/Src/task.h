@@ -15,22 +15,19 @@
 #include <stdint.h>
 
 typedef enum {
-	STOPPED = 0,
-	RUNNING
-}task_state;
+	TASK_UNUSED = 0,
+	TASK_READY,
+	TASK_RUNNING
+}task_state_t;
 
 typedef struct tcb {
 	uint32_t *sp;
 	struct tcb *next_tcb;
-	task_state state;
+	const char *task_name;
+	task_state_t state;
 }tcb_t;
 
-extern tcb_t tcbs[NUM_TASK];
 
-extern uint32_t tcb_stack[NUM_TASK][STACK_SIZE];
-
-extern tcb_t *active_tcb;
-
-void init_tasks(uint8_t pid,void(*task)());
+void task_init(uint8_t pid,const char *,void(*task)());
 
 #endif /* TASK_H_ */
