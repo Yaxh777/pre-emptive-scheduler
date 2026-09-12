@@ -20,9 +20,12 @@ void task_init(uint8_t pid,const char *name,void(*task)()){
 	__disable_irq();										/*Disable Maskable Interrupt*/
 
 	if(pid == 0){											/*Establishing Linked List*/
-		for(uint8_t i = 0; i< NUM_TASK;i++)
-			tcbs[i].next_tcb = &tcbs[(i+1) % NUM_TASK];
-}
+		tcbs[0].next_tcb = &tcbs[0];
+	}
+	else{
+		tcbs[pid-1].next_tcb = &tcbs[pid];
+		tcbs[pid].next_tcb = &tcbs[0];
+	}
 
 	tcbs[pid].sp = &tcb_stack[pid][STACK_SIZE - 16];		/*Setting Up The Stack Pointer in the Task Stack*/
 
