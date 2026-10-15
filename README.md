@@ -7,7 +7,10 @@ This Scheduler uses the PendSV exception to switch the context triggered by the 
 # Configurations
 
 User can change the number of tasks according to their need by Changing the NUM_TASK macro
-in inc/task.h
+in:
+```
+inc/task.h
+```
 
 # Boilerplate and API
 Necessary Headers :
@@ -33,9 +36,14 @@ To Initialise the clock (Systick):
 ```
 rtos_status_t rtos_init(void);
 ```
+
 By default the time quantum is 10ms
 
-User can configure it in src/systick.c
+User can configure it in:
+
+```
+src/systick.c
+```
 
 To start the Scheduler:
 
@@ -100,4 +108,12 @@ int main(){
 
 
 https://github.com/user-attachments/assets/7a6a6971-6be3-4322-b0fb-758d9e6ad396
+
+# Driver Support
+
+All the currently supported driver headers are available in:
+
+```
+inc/*
+```
 
